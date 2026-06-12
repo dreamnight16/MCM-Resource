@@ -1,0 +1,13 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^http://localhost" },
+    { "pattern": "^https://doi\\.org/10\\." },
+    { "pattern": "^https://arxiv\\.org" },
+    { "pattern": "^https://www\\.contributor-covenant\\.org" }
+  ],
+  "replacementPatterns": [],
+  "timeout": "20s",
+  "retryOn429": true,
+  "fallbackRetryDelay": "30s",
+  "aliveStatusCodes": [200, 206, 403, 429]
+}

@@ -32,10 +32,28 @@ jobs:
 
       - name: Check template files
         run: |
-          errors=0
           for f in templates/*.tex; do
             [ -f "$f" ] && echo "  [OK] $f" || true
           done
           for f in templates/*.py; do
             [ -f "$f" ] && echo "  [OK] $f" || true
           done
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install core dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy scipy pandas scikit-learn statsmodels pytest
+
+      - name: Run core algorithm tests
+        run: |
+          python -m pytest algorithms/python/tests/ -v --tb=short
+
+      - name: Lint with ruff
+        run: |
+          pip install ruff
+          ruff check algorithms/python/ --ignore E501,N802,N803 || true

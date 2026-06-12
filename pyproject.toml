@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "math-modeling-kb"
+version = "0.1.0"
+description = "Mathematical Modeling Contest Knowledge Base"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["algorithms/python/tests"]
+python_files = "test_*.py"
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "core: tests for core algorithms (AHP, TOPSIS, grey model)",
+    "slow: tests that may be slow (LSTM, large-scale)",
+    "optional: tests requiring optional dependencies (tensorflow, xgboost, etc.)",
+]
+
+[tool.coverage.run]
+source = ["algorithms/python"]
+omit = ["*/tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    'if __name__ == .__main__.:',
+    "raise NotImplementedError",
+    "except ImportError:",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long — handled by formatter
+    "N802",  # lowercase function names — intentional for teaching code
+    "N803",  # uppercase argument names — intentional for teaching code
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

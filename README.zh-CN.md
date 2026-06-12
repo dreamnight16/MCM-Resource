@@ -9,6 +9,9 @@
 ```
 math-modeling-kb/
 ├── README.md                    ← 你在这里
+├── requirements.txt             # Python 依赖（分层：核心/算法/可选）
+├── pyproject.toml               # pytest + ruff + coverage 配置
+├── pyrightconfig.json           # 类型检查配置
 ├── models/                      # 模型知识体系（按问题类型组织）
 │   ├── optimization/            # 优化与控制
 │   ├── evaluation/              # 评价与决策
@@ -20,6 +23,7 @@ math-modeling-kb/
 │   └── auxiliary/               # 通用辅助方法
 ├── algorithms/                  # 可运行代码
 │   ├── python/
+│   │   └── tests/               # pytest 测试套件（67 个测试）
 │   └── matlab/
 ├── competitions/                # 各赛事专项指南
 ├── templates/                   # 论文/数据处理模板
@@ -30,8 +34,10 @@ math-modeling-kb/
 │   ├── prompts/                 # 分阶段提示词模板
 │   ├── skills/                  # Claude Code Skill 配置
 │   └── workflow/                # AI 辅助全流程
+├── data/                        # 示例数据集（CSV）
+├── .github/                     # CI/CD + Issue/PR 模板
+│   └── workflows/               # GitHub Actions（pytest + 链接检查 + lint）
 ├── tools/                       # 工具脚本
-├── data/                        # 示例数据集
 ├── papers/                      # 优秀论文分析笔记
 ├── notes/                       # 学习笔记
 └── scripts/                     # 辅助脚本
@@ -81,10 +87,11 @@ math-modeling-kb/
 
 ### 快速开始
 
-1. **确定赛题类型** → 查阅上方速查矩阵定位模型目录
-2. **阅读模型文档** → `models/<类别>/<模型名>.md`，了解原理和适用场景
-3. **运行代码示例** → `algorithms/{python,matlab}/` 下有独立可运行的实现
-4. **套用论文模板** → `templates/latex/` 有美赛/国赛论文模板
+1. **安装依赖** → `pip install -r requirements.txt`（核心依赖：numpy, scipy, pandas, scikit-learn）
+2. **确定赛题类型** → 查阅上方速查矩阵定位模型目录
+3. **阅读模型文档** → `models/<类别>/<模型名>.md`，了解原理和适用场景
+4. **运行代码示例** → `algorithms/{python,matlab}/` 下有独立可运行的实现
+5. **套用论文模板** → `templates/latex/` 有美赛/国赛论文模板
 
 ### 模型文档结构
 
@@ -100,7 +107,10 @@ math-modeling-kb/
 ### 代码使用
 
 ```bash
-# Python 示例
+# 安装依赖
+pip install -r requirements.txt
+
+# 运行单个算法示例
 python algorithms/python/grey_model.py
 
 # MATLAB 示例（在 MATLAB 中运行）
@@ -108,6 +118,23 @@ run('algorithms/matlab/grey_model.m')
 ```
 
 每个文件包含 `if __name__ == '__main__':`（Python）或内置示例数据（MATLAB），可直接运行验证。
+
+### 开发指南
+
+```bash
+# 运行全部测试（67 个测试，覆盖核心算法）
+pytest algorithms/python/tests/ -v
+
+# 运行测试并生成覆盖率报告
+pip install pytest-cov
+pytest algorithms/python/tests/ --cov=algorithms/python --cov-report=term-missing
+
+# 代码风格检查
+pip install ruff
+ruff check algorithms/python/
+```
+
+CI（GitHub Actions）在每次 push 和 PR 时自动运行 `pytest` + `ruff`。
 
 ## 模型分类总览
 

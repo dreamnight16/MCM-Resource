@@ -1,0 +1,7 @@
+{
+  "include": ["algorithms/python"],
+  "exclude": ["**/tests", "**/__pycache__"],
+  "typeCheckingMode": "basic",
+  "reportMissingImports": true,
+  "pythonVersion": "3.11"
+}

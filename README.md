@@ -9,6 +9,9 @@ A comprehensive knowledge base designed for **all types of mathematical modeling
 ```
 math-modeling-kb/
 ├── README.md                    ← You are here
+├── requirements.txt             # Python dependencies (tiered: core / algorithm / optional)
+├── pyproject.toml               # pytest + ruff + coverage configuration
+├── pyrightconfig.json           # Type checking configuration
 ├── models/                      # Model knowledge system (organized by problem type)
 │   ├── optimization/            # Optimization and Control
 │   ├── evaluation/              # Evaluation and Decision Making
@@ -20,6 +23,7 @@ math-modeling-kb/
 │   └── auxiliary/               # General Auxiliary Methods
 ├── algorithms/                  # Runnable code
 │   ├── python/
+│   │   └── tests/               # pytest test suite (67 tests)
 │   └── matlab/
 ├── competitions/                # Competition-specific guides
 ├── templates/                   # Thesis/Data processing templates
@@ -30,8 +34,10 @@ math-modeling-kb/
 │   ├── prompts/                 # Stage-specific prompt templates
 │   ├── skills/                  # Claude Code Skill configurations
 │   └── workflow/                # AI-assisted full workflow
+├── data/                        # Sample datasets (CSV)
+├── .github/                     # CI/CD + Issue/PR templates
+│   └── workflows/               # GitHub Actions (pytest + link check + lint)
 ├── tools/                       # Utility scripts
-├── data/                        # Sample datasets
 ├── papers/                      # Excellent paper analysis notes
 ├── notes/                       # Learning notes
 └── scripts/                     # Helper scripts
@@ -81,10 +87,11 @@ See detailed competition-specific guides under the [`competitions/`](competition
 
 ### Quick Start
 
-1. **Determine the problem type** → Refer to the quick reference matrix above to locate the model directory
-2. **Read the model documentation** → `models/<category>/<model-name>.md` to understand principles and applicable scenarios
-3. **Run code examples** → `algorithms/{python,matlab}/` contains independently runnable implementations
-4. **Apply thesis templates** → `templates/latex/` contains MCM/CUMCM thesis templates
+1. **Install dependencies** → `pip install -r requirements.txt` (core deps: numpy, scipy, pandas, scikit-learn)
+2. **Determine the problem type** → Refer to the quick reference matrix above to locate the model directory
+3. **Read the model documentation** → `models/<category>/<model-name>.md` to understand principles and applicable scenarios
+4. **Run code examples** → `algorithms/{python,matlab}/` contains independently runnable implementations
+5. **Apply thesis templates** → `templates/latex/` contains MCM/CUMCM thesis templates
 
 ### Model Document Structure
 
@@ -100,7 +107,10 @@ Each `.md` file contains:
 ### Code Usage
 
 ```bash
-# Python example
+# Install dependencies
+pip install -r requirements.txt
+
+# Run a single algorithm example
 python algorithms/python/grey_model.py
 
 # MATLAB example (run in MATLAB)
@@ -108,6 +118,23 @@ run('algorithms/matlab/grey_model.m')
 ```
 
 Each file includes `if __name__ == '__main__':` (Python) or built-in example data (MATLAB), and can be run directly for verification.
+
+### Development
+
+```bash
+# Run all tests (67 tests covering core algorithms)
+pytest algorithms/python/tests/ -v
+
+# Run tests with coverage report
+pip install pytest-cov
+pytest algorithms/python/tests/ --cov=algorithms/python --cov-report=term-missing
+
+# Lint check
+pip install ruff
+ruff check algorithms/python/
+```
+
+CI (GitHub Actions) runs `pytest` + `ruff` on every push and PR.
 
 ## Model Classification Overview
 

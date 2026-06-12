@@ -193,5 +193,7 @@ if __name__ == '__main__':
         if 'did_estimate' in panel_result:
             print(f"\n[面板DID] DID估计量: {panel_result['did_estimate']:.4f}, "
                   f"p={panel_result['p_value']:.4f}")
-    except:
-        pass
+    except ImportError:
+        print("\n[面板DID] linearmodels 未安装，跳过面板 DID 演示。pip install linearmodels")
+    except Exception as e:
+        print(f"\n[面板DID] 面板回归失败: {type(e).__name__}: {e}")

@@ -9,7 +9,7 @@ Claude Code 的 Skill 是一段会自动加载到对话中的专业知识，让 
 在项目根目录创建以下文件：
 
 ```
-math-modeling-kb/
+MCM-Resource/
 └── .claude/
     └── skills/
         └── math-modeling/

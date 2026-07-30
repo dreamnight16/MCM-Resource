@@ -7,7 +7,7 @@
 ## ディレクトリ構成
 
 ```
-math-modeling-kb/
+MCM-Resource/
 ├── README.md                    ← ここ
 ├── models/                      # モデル知識体系（問題タイプ別）
 │   ├── optimization/            # 最適化と制御

@@ -7,7 +7,7 @@
 ## 目录结构
 
 ```
-math-modeling-kb/
+MCM-Resource/
 ├── README.md                    ← 你在这里
 ├── requirements.txt             # Python 依赖（分层：核心/算法/可选）
 ├── pyproject.toml               # pytest + ruff + coverage 配置

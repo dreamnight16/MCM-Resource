@@ -6,7 +6,7 @@
 
 ### 1. 报告问题
 
-发现 bug、文档错误或有改进建议？请提交 [Issue](https://github.com/sixtdreanight/math-modeling-resources/issues)。
+发现 bug、文档错误或有改进建议？请提交 [Issue](https://github.com/sixtdreanight/MCM-Resource/issues)。
 
 ### 2. 提交代码
 

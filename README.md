@@ -7,7 +7,7 @@ A comprehensive knowledge base designed for **all types of mathematical modeling
 ## Directory Structure
 
 ```
-math-modeling-kb/
+MCM-Resource/
 ├── README.md                    ← You are here
 ├── requirements.txt             # Python dependencies (tiered: core / algorithm / optional)
 ├── pyproject.toml               # pytest + ruff + coverage configuration

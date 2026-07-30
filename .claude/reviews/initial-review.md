@@ -1,4 +1,4 @@
-# Code Review: math-modeling-kb
+# Code Review: MCM-Resource
 
 **Reviewed**: 2026-05-27
 **Type**: Full repository review + fixes

@@ -7,7 +7,7 @@
 ## 目錄結構
 
 ```
-math-modeling-kb/
+MCM-Resource/
 ├── README.md                    ← 你在這裡
 ├── models/                      # 模型知識體系（按問題類型組織）
 │   ├── optimization/            # 優化與控制

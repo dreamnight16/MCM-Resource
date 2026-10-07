@@ -66,6 +66,10 @@ Starting from MCM/ICM 2026, the use of AI tools is explicitly permitted. This re
 - **[Claude Code Skill](ai-tools/skills/claude-skill.md)** — Automatically activates mathematical modeling expertise after installation
 - **[AI-Assisted Full Workflow](ai-tools/workflow/ai-workflow.md)** — 96-hour timeline + AI checklist
 
+The `ai-tools/` directory is optional. The model documentation, runnable
+algorithms, competition guides, templates, sample data, and tests work without
+an AI service, account, or credential.
+
 ## Covered Competitions
 
 | Tier | Competition | Time | Core Problem Types |

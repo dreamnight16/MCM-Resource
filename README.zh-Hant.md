@@ -60,6 +60,9 @@ MCM-Resource/
 - **[Claude Code Skill](ai-tools/skills/claude-skill.md)** — 安裝後可自動啟動數學建模專業知識
 - **[AI 輔助全流程](ai-tools/workflow/ai-workflow.md)** — 96 小時時間線 + AI 檢查清單
 
+`ai-tools/` 目錄是可選的。模型文件、可執行演算法、賽事指南、模板、範例
+資料和測試均不呼叫 AI 服務，也不需要帳號或憑證。
+
 ## 覆蓋賽事
 
 | 梯隊 | 賽事 | 時間 | 核心題型 |
